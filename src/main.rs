@@ -18,14 +18,6 @@ fn has_read_permission<P: AsRef<Path>>(path: P) -> Result<bool, Box<dyn Error>> 
     Ok(mode & 0o444 != 0)
 }
 
-// check if the current user has write permissions for a given path
-fn has_write_permission<P: AsRef<Path>>(path: P) -> Result<bool, Box<dyn Error>> {
-    let metadata = fs::metadata(path.as_ref())?;
-    let permissions = metadata.permissions();
-    let mode = permissions.mode();
-    Ok(mode & 0o222 != 0)
-}
-
 
 
 fn main() -> Result<(), Box<dyn Error>> {
@@ -58,16 +50,6 @@ fn main() -> Result<(), Box<dyn Error>> {
 
     if !has_read_permission(&bat_capacity_path)? {
         println!("No read permission for the battery capacity path");
-        return Err("Permission denied".into());
-    }
-
-    if !has_write_permission(&bat_status_path)? {
-        println!("No write permission for the battery status path");
-        return Err("Permission denied".into());
-    }
-
-    if !has_write_permission(&bat_capacity_path)? {
-        println!("No write permission for the battery capacity path");
         return Err("Permission denied".into());
     }
 
