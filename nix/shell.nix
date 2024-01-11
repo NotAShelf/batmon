@@ -1,9 +1,10 @@
 {
+  packagePath,
   callPackage,
   gopls,
   go,
 }: let
-  mainPkg = callPackage ./default.nix {};
+  mainPkg = callPackage packagePath {};
 in
   mainPkg.overrideAttrs (oa: {
     nativeBuildInputs =

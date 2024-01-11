@@ -1,9 +1,9 @@
 {buildGoModule}:
 buildGoModule {
-  pname = "sample-go";
-  version = "0.0.1";
+  pname = "Batmon";
+  version = "0.1.0";
 
-  src = ./.;
+  src = ../.;
 
   vendorHash = null;
 

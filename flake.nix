@@ -10,13 +10,19 @@
     forEachSystem = nixpkgs.lib.genAttrs systems;
     pkgsForEach = nixpkgs.legacyPackages;
   in {
+    nixosModules = {
+      batmon = ./nix/module.nix {inherit self;};
+    };
+
     packages = forEachSystem (system: {
       batmon = pkgsForEach.${system}.callPackage ./nix/package.nix {};
-      default = self.${system}.batmon;
+      default = self.packages.${system}.batmon;
     });
 
     devShells = forEachSystem (system: {
-      default = pkgsForEach.${system}.callPackage ./nix/shell.nix {};
+      default = pkgsForEach.${system}.callPackage ./nix/shell.nix {
+        packagePath = ./nix/package.nix;
+      };
     });
   };
 }

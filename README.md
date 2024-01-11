@@ -44,7 +44,7 @@ directory. You can specify a different configuration file using the `--config`
 flag:
 
 ```console
-gomon -c /path/to/config.json
+batmon -c /path/to/config.json
 ```
 
 The configuration file should contain a list of batteries to monitor, along
