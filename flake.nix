@@ -1,8 +1,6 @@
 {
-  description = "Batmon - battery monitor service";
-  inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
-  };
+  description = "Batmon - battery monitor";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs";
 
   outputs = {
     self,
@@ -13,11 +11,12 @@
     pkgsForEach = nixpkgs.legacyPackages;
   in {
     packages = forEachSystem (system: {
-      default = pkgsForEach.${system}.callPackage ./default.nix {};
+      batmon = pkgsForEach.${system}.callPackage ./nix/package.nix {};
+      default = self.${system}.batmon;
     });
 
     devShells = forEachSystem (system: {
-      default = pkgsForEach.${system}.callPackage ./shell.nix {};
+      default = pkgsForEach.${system}.callPackage ./nix/shell.nix {};
     });
   };
 }

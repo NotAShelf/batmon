@@ -1,0 +1,8 @@
+{
+  "batPaths": [
+    {
+      "path": "/sys/class/power_supply/BAT0",
+      "extraCommand": "notify-send 'hello'"
+    }
+  ]
+}
