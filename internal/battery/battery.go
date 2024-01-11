@@ -5,9 +5,9 @@ import (
 	"strings"
 	"time"
 
-	"gomon/internal/exec"
-	"gomon/internal/logger"
-	"gomon/internal/model"
+	"batmon/internal/exec"
+	"batmon/internal/logger"
+	"batmon/internal/model"
 )
 
 // battery monitor service
@@ -53,7 +53,7 @@ func Monitor(bat model.Battery, profiles ...string) error {
 			}
 
 			// execute the extra command
-            // if any
+			// if any
 			if bat.ExtraCommand != "" {
 				extraCommandArgs := strings.Split(bat.ExtraCommand, " ")
 				err = exec.ExecCommand(extraCommandArgs[0], extraCommandArgs[1:]...)

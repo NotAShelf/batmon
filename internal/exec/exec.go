@@ -3,7 +3,7 @@ package exec
 import (
 	"os/exec"
 
-	"gomon/internal/logger"
+	"batmon/internal/logger"
 )
 
 // execute a command with args and returns its output

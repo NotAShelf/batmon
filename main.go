@@ -7,14 +7,14 @@ import (
 	"github.com/spf13/cobra"
 	"github.com/spf13/viper"
 
-	"gomon/internal/battery"
-	"gomon/internal/config"
-	"gomon/internal/model"
+	"batmon/internal/battery"
+	"batmon/internal/config"
+	"batmon/internal/model"
 )
 
 func main() {
 	var rootCmd = &cobra.Command{
-		Use:   "gomon",
+		Use:   "batmon",
 		Short: "TODO",
 		Long:  `TODO`,
 		Run: func(cmd *cobra.Command, args []string) {

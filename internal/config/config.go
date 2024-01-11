@@ -4,8 +4,8 @@ import (
 	"encoding/json"
 	"os"
 
-	"gomon/internal/logger"
-	"gomon/internal/model"
+	"batmon/internal/logger"
+	"batmon/internal/model"
 )
 
 // Load loads the battery configuration from a file.
