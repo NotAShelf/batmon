@@ -52,7 +52,6 @@ in {
       serviceConfig = {
         Type = "simple";
         Restart = "on-failure";
-        DynamicUser = true;
       };
     };
   };
