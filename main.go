@@ -15,7 +15,7 @@ import (
 func main() {
 	var rootCmd = &cobra.Command{
 		Use:   "batmon",
-		Short: "TODO",
+		Short: "Dead-simple battery monitor for Linux",
 		Long:  `TODO`,
 		Run: func(cmd *cobra.Command, args []string) {
 			// load the battery configuration
