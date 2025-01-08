@@ -41,8 +41,6 @@ in {
     systemd.user.services.batmon = {
       description = "Simple, reactive power management service";
       documentation = ["https://github.com/NotAShelf/batmon"];
-      wants = ["power-profiles-daemon.service"];
-      requires = ["power-profiles-daemon.service"];
       wantedBy = ["multi-user.target"];
       environment.PATH = mkForce "/run/wrappers/bin:${lib.makeBinPath [cfg.package]}";
       script = ''
