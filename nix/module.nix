@@ -50,7 +50,7 @@ in {
     systemd.user.services.batmon = {
       description = "Simple, reactive power management service";
       documentation = ["https://github.com/NotAShelf/batmon"];
-      wantedBy = ["multi-user.target"];
+      wantedBy = ["default.target"];
       environment.PATH = mkForce "/run/wrappers/bin:${lib.makeBinPath [
         # Batmon expects powerprofilesctl in PATH
         config.services.power-profiles-daemon.package
