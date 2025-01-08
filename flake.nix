@@ -1,6 +1,6 @@
 {
   description = "Batmon - battery monitor";
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs";
+  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
   outputs = {
     self,
@@ -11,7 +11,8 @@
     pkgsForEach = nixpkgs.legacyPackages;
   in {
     nixosModules = {
-      batmon = ./nix/module.nix {inherit self;};
+      batmon = import ./nix/module.nix self;
+      default = self.nixosModules.batmon;
     };
 
     packages = forEachSystem (system: {
