@@ -37,11 +37,14 @@ in {
   };
 
   config = mkIf cfg.enable {
-    systemd.user.services."batmon" = {
-      description = "Power Monitoring Service";
+    environment.systemPackages = [cfg.package];
+    systemd.user.services.batmon = {
+      description = "Simple, reactive power management service";
+      documentation = "https://github.com/NotAShelf/batmon";
       wants = ["power-profiles-daemon.service"];
-      wantedBy = ["default.target"];
-      environment.PATH = mkForce "/run/wrappers/bin:${lib.makeBinPath cfg.package}";
+      requires = ["power-profiles-daemon.service"];
+      wantedBy = ["multi-user.target"];
+      environment.PATH = mkForce "/run/wrappers/bin:${lib.makeBinPath [cfg.package]}";
       script = ''
         ${lib.getExe cfg.package} --config ${builtins.toJSON cfg.settings}
       '';
