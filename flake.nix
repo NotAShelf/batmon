@@ -21,9 +21,7 @@
     });
 
     devShells = forEachSystem (system: {
-      default = pkgsForEach.${system}.callPackage ./nix/shell.nix {
-        packagePath = ./nix/package.nix;
-      };
+      default = pkgsForEach.${system}.callPackage ./nix/shell.nix {};
     });
   };
 }
