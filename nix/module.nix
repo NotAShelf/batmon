@@ -32,7 +32,7 @@ in {
         ];
       };
 
-      description = "Settings for BatmoSettings for Batmonn";
+      description = "Settings for Batmon";
     };
   };
 
@@ -40,7 +40,7 @@ in {
     environment.systemPackages = [cfg.package];
     systemd.user.services.batmon = {
       description = "Simple, reactive power management service";
-      documentation = "https://github.com/NotAShelf/batmon";
+      documentation = ["https://github.com/NotAShelf/batmon"];
       wants = ["power-profiles-daemon.service"];
       requires = ["power-profiles-daemon.service"];
       wantedBy = ["multi-user.target"];
