@@ -37,22 +37,23 @@ in {
   };
 
   config = mkIf cfg.enable {
+    # Create the batmon configuration file in /etc/batmon.json
+    environment.etc."batmon.json".source = format.generate "batmon.json" cfg.settings;
+
     environment.systemPackages = [cfg.package];
+
     systemd.user.services.batmon = {
       description = "Simple, reactive power management service";
       documentation = ["https://github.com/NotAShelf/batmon"];
-      wants = ["power-profiles-daemon.service"];
-      requires = ["power-profiles-daemon.service"];
       wantedBy = ["multi-user.target"];
       environment.PATH = mkForce "/run/wrappers/bin:${lib.makeBinPath [cfg.package]}";
       script = ''
-        ${lib.getExe cfg.package} --config ${builtins.toJSON cfg.settings}
+        ${lib.getExe cfg.package} --config /etc/batmon.json
       '';
 
       serviceConfig = {
         Type = "simple";
         Restart = "on-failure";
-        DynamicUser = true;
       };
     };
   };
