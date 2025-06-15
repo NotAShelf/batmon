@@ -1,5 +1,16 @@
 # 🔋 Batmon
 
+[Watt]: https://github.com/notashelf/watt
+
+> [!WARNING]
+> Batmon has been deprecated, and the repository has been abandoned completely.
+> I find the current approach to be inefficient (and insufficient) so no further
+> work will be put into Batmon. However, I have began working on a much more
+> powerful alternative to Batmon, called [Watt]. If you have at any point in
+> time wanted a better alternative to TLP or auto-cpufreq, Watt is the answer.
+> This repo has been archived, and further development will continue as a part
+> of Watt if necessary.
+
 Dead-simple, somewhat configurable battery monitor for Linux. Batmon monitors
 the battery path in real time and adjusts your power profiles accordingly to
 optimize battery life for e.g. laptops.
